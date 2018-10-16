@@ -22,96 +22,94 @@ export const UPDATE_TODO_ERROR = '[Todo] UPDATE_TODO_ERROR'
 
 export const COMPLETE_TODO = 'COMPLETE_TODO'
 
-
 //Delete
 export const DELETE_TODO = '[Todo] DELETE_TODO'
 export const DELETE_TODO_SUCCESS = '[Todo] DELETE_TODO_SUCCESS'
 export const DELETE_TODO_ERROR = '[Todo] DELETE_TODO_ERROR'
 
 
-const API = 'https://todos-api-learn.herokuapp.com/todos';
-
 export function CreateTodo(todo) {
   return (dispatch, getState) => {
     return TodoApi.createTodo(todo).then(res => {
-      dispatch(CreateTodoSuccess(res.data.data))
+      dispatch(CreateTodoSuccess(res.data))
     })
   }
 }
 
 export function CreateTodoSuccess(todo){
-    return {
-        type:CREATE_TODO_SUCCESS,
-        todo
-    }
+  return {
+    type:CREATE_TODO_SUCCESS,
+    todo
+  }
 }
 
 export function GetTodos(){
-    return (dispatch, getState) => {
-        return TodoApi.getTodo().then(res => {
-            dispatch(GetTodoSuccess(res))
-        })
-    }
+  return (dispatch, getState) => {
+    return TodoApi.getTodo().then(res => {
+      dispatch(GetTodoSuccess(res))
+    })
+  }
 }
 
 export function GetTodoSuccess(todos){
-    return {
-        type:GET_TODOS_SUCCESS,
-        todos
-    }
+  return {
+    type:GET_TODOS_SUCCESS,
+    todos
+  }
 }
 
 export function StartEditing(_id) {
-    return {
-        type: START_EDITING,
-        _id
-    }
+  return {
+    type: START_EDITING,
+    _id
+  }
 }
+
 export function CancelEditing(_id) {
-    return {
-        type: CANCEL_EDITING,
-        _id
-    }
+  return {
+    type: CANCEL_EDITING,
+    _id
+  }
 }
 
 export function UpdateTodo(todo) {
-    return (dispatch, getState) => {
-      dispatch({
-          type: UPDATE_TODO,
-          todo
-      })
-      TodoApi.updateTodo(todo).then(res => {
-          dispatch(UpdateTodoSuccess(res.data.data))
-      })
+  return (dispatch, getState) => {
+    dispatch({
+      type: UPDATE_TODO,
+      todo
+  })
+    TodoApi.updateTodo(todo).then(res => {
+      dispatch(UpdateTodoSuccess(res.data.data))
+    })
   }
 }
 
 export function UpdateTodoSuccess(todo) {
-    return {
-        type: UPDATE_TODO_SUCCESS,
-        todo,
-        _id: todo._id
-    }
+  return {
+    type: UPDATE_TODO_SUCCESS,
+    todo,
+    _id: todo.id
+  }
 }
 
 export function DeleteTodo(todo) {
-    return (dispatch, getState) => {
-        dispatch({
-            type: DELETE_TODO,
-            todo
-        })
-        TodoApi.removeTodo(todo).then(res => {
-            if (res.status == 204) {
-                dispatch(DeleteTodoSuccess(todo))
-            }
-        })
-    }
+  return (dispatch, getState) => {
+    dispatch({
+      type: DELETE_TODO,
+      todo
+    })
+    TodoApi.removeTodo(todo).then(res => {
+      if (res.status === 200) {
+        dispatch(DeleteTodoSuccess(todo))
+        }
+    })
+  }
 }
 
 export function DeleteTodoSuccess(todo) {
-    return {
-        type: DELETE_TODO_SUCCESS,
-        todo,
-        _id: todo._id
-    }
+  return {
+    type: DELETE_TODO_SUCCESS,
+    todo,
+    _id: todo.id
+  }
 }

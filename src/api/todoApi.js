@@ -11,22 +11,22 @@ const API = 'https://todos-api-learn.herokuapp.com/todos'
 
 //Create
 const createTodo = todo => {
-    return HttpClient.post(API, todo)
+  return HttpClient.post(API, todo)
 }
 
 //Read
 const getTodo = () => {
-    return HttpClient.get(API)
+  return HttpClient.get(API)
 }
 
 //Update
 const updateTodo = todo => {
-    return HttpClient.put(API, todo)
+  return HttpClient.post(`${API}/${todo.id}`, todo)
 }
 
 //Delete
 const removeTodo = todo => {
-    return HttpClient.delete(`${API}/${todo._id}`)
+  return HttpClient.delete(`${API}/${todo.id}`)
 }
 
 
