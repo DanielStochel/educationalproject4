@@ -1,16 +1,12 @@
 import React from 'react';
-
 import {Button, Table} from 'semantic-ui-react'
-
-// The Todo Row component is a simple stateless component, It simply takes the props
-// and maps the specific events to the methods of parent component
 
 const TodoRow = (props) => {
   return (
     <Table.Row className={getClassName(props)}>
       <Table.Cell>{props.todo.title}</Table.Cell>
       <Table.Cell>{props.todo.description}</Table.Cell>
-      <Table.Cell>{props.todo.date}</Table.Cell>
+      <Table.Cell>{props.todo.created_by}</Table.Cell>
       <Table.Cell className="options">
         {props.todo.status !== 'done' && <Button className="option-buttons" color='green' onClick={props.completeTodo}>
           <i className="fa fa-check"></i>
@@ -25,8 +21,6 @@ const TodoRow = (props) => {
     </Table.Row>
   );
 }
-
-// Right now Updating, done and deleting these three states are represented with different Class Name
 
 const getClassName = (props) => {
   return `

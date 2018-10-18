@@ -1,23 +1,14 @@
 import React, {Component} from 'react';
-
 import {Button, Table} from 'semantic-ui-react'
 import {Input} from 'semantic-ui-react'
-
-//Import moment library for React Datepicker
-
-import moment from 'moment';
-
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 
 class EditTodo extends Component {
   constructor(props) {
     super(props);
-        // If props.todo exists this component is used to  Edit a Todo,
-        // else this is a Create New Todo Component
+
     if (this.props.todo) {
       this.state = {
-          ...this.props.todo,
+        ...this.props.todo,
       }
       } else {
         this.state = {
@@ -26,19 +17,13 @@ class EditTodo extends Component {
       }
     }
 
-    //Initializes a Empty Todo Object
-
   emptyTodo = () => {
-    return {title: "", description: "", date: moment()}
+    return {title: "", description: "", created_by: ''}
   }
-
-
-    // Input change handling methods
 
   changeNewTitle = (event) => {
     this.setState({
       title: event.target.value,
-      created_by: 'Daniel'
     })
   }
 
@@ -46,37 +31,25 @@ class EditTodo extends Component {
     this.setState({description: event.target.value})
   }
 
-  changeNewDate = (event) => {
-    this.setState({date: event})
+  changeNewCreated = (event) => {
+    this.setState({created_by: event.target.value})
   }
 
-
-
-    // Form submission methods
-
   createTodo = (event) => {
+    this.resetTodo()
     this.props.createTodo(this.state)
-      this.resetTodo()
   }
 
   editTodo = (event) => {
     this.props.editTodo(this.state)
   }
 
-
-    // Modifying the inputs indirectly methods
-
   resetTodo = () => {
-    this.setState({title: "", description: "", date: moment()})
+    this.setState({title: "", description: "", created_by: ''})
   }
 
   cancelEditing = () => {
     this.props.cancelEditing();
-  }
-
-    // Convert the date to moment object for the React DatePicker
-  getDateForDatePicker() {
-    return moment(this.state.date)
   }
 
   render() {
@@ -86,20 +59,21 @@ class EditTodo extends Component {
           <Input
             placeholder='Title'
             value={this.state.title}
-            onChange={this.changeNewTitle}  />
+            onChange={this.changeNewTitle} />
         </Table.Cell>
 
         <Table.Cell>
           <Input
             placeholder='Description'
             value={this.state.description}
-            onChange={this.changeNewDescription}  />
+            onChange={this.changeNewDescription} />
         </Table.Cell>
 
         <Table.Cell>
-          <DatePicker
-            selected={this.getDateForDatePicker()}
-            onChange={this.changeNewDate}/>
+        <Input
+          placeholder='created_by'
+          value={this.state.created_by}
+          onChange={this.changeNewCreated} />
         </Table.Cell>
 
         <Options
@@ -109,16 +83,12 @@ class EditTodo extends Component {
             resetTodo={this.resetTodo}
             cancelEdit={this.cancelEditing}
         />
-
       </Table.Row>
     )
   }
 }
 
 export default EditTodo;
-
-
-// The option component decides the component usage
 
 const Options = (props) => {
   if (props.todo && props.todo.editing) {
@@ -127,10 +97,6 @@ const Options = (props) => {
     return AddOptions(props);
   }
 }
-
-// The two local components - EditOptions and AddOptions simply maps their events
-// to the state events of their parent compoent through the props
-
 
 const EditOptions = (props) => {
   return (

@@ -1,18 +1,13 @@
 import { TodoApi } from '../api/todoApi'
 
-//Create
 export const CREATE_TODO = '[Todo] CREATE_TODO'
 export const CREATE_TODO_SUCCESS = '[Todo] CREATE_TODO_SUCCESS'
 export const CREATE_TODO_ERROR = '[Todo] CREATE_TODO_ERROR'
 
-
-//Read
 export const GET_TODOS = '[Todo] GET_TODOS'
 export const GET_TODOS_SUCCESS = '[Todo] GET_TODOS_SUCCESS'
 export const GET_TODOS_ERROR = '[Todo] GET_TODOS_ERROR'
 
-
-//Update
 export const START_EDITING ='[Todo] START_EDITING'
 export const CANCEL_EDITING = '[Todo] CANCEL_EDITING'
 
@@ -22,11 +17,9 @@ export const UPDATE_TODO_ERROR = '[Todo] UPDATE_TODO_ERROR'
 
 export const COMPLETE_TODO = 'COMPLETE_TODO'
 
-//Delete
 export const DELETE_TODO = '[Todo] DELETE_TODO'
 export const DELETE_TODO_SUCCESS = '[Todo] DELETE_TODO_SUCCESS'
 export const DELETE_TODO_ERROR = '[Todo] DELETE_TODO_ERROR'
-
 
 export function CreateTodo(todo) {
   return (dispatch, getState) => {
@@ -58,17 +51,17 @@ export function GetTodoSuccess(todos){
   }
 }
 
-export function StartEditing(_id) {
+export function StartEditing(id) {
   return {
     type: START_EDITING,
-    _id
+    id
   }
 }
 
-export function CancelEditing(_id) {
+export function CancelEditing(id) {
   return {
     type: CANCEL_EDITING,
-    _id
+    id
   }
 }
 
@@ -78,9 +71,9 @@ export function UpdateTodo(todo) {
       type: UPDATE_TODO,
       todo
   })
-    TodoApi.updateTodo(todo).then(res => {
-      dispatch(UpdateTodoSuccess(res.data.data))
-    })
+
+    TodoApi.updateTodo(todo)
+    dispatch(UpdateTodoSuccess(todo))
   }
 }
 
@@ -88,7 +81,7 @@ export function UpdateTodoSuccess(todo) {
   return {
     type: UPDATE_TODO_SUCCESS,
     todo,
-    _id: todo.id
+    id: todo.id
   }
 }
 
@@ -99,9 +92,9 @@ export function DeleteTodo(todo) {
       todo
     })
     TodoApi.removeTodo(todo).then(res => {
-      if (res.status === 200) {
+      if (res.status === 204) {
         dispatch(DeleteTodoSuccess(todo))
-        }
+      }
     })
   }
 }
@@ -110,6 +103,6 @@ export function DeleteTodoSuccess(todo) {
   return {
     type: DELETE_TODO_SUCCESS,
     todo,
-    _id: todo.id
+    id: todo.id
   }
 }

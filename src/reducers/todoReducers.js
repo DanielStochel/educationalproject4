@@ -3,23 +3,17 @@ import * as TodoActions from '../actions/todoActions'
 export function TodoListReducer(state = [], action) {
   switch (action.type) {
 
-        // The cases ordered in CRUD order.
-
-        // Create
     case TodoActions.CREATE_TODO_SUCCESS: {
       return [
         ...state,
         action.todo,
       ];
     }
-    //Read
+
     case TodoActions.GET_TODOS_SUCCESS: {
       return action.todos.data
     }
 
-    // The following Cases handle the data by mapping it. Mostly because they are related with the modification of a single Data
-
-    //Update
     case TodoActions.START_EDITING: {
       return state.map(s => todo(s, action))
     }
@@ -35,35 +29,26 @@ export function TodoListReducer(state = [], action) {
       return state.map(s => todo(s, action))
     }
 
-    //Delete
     case TodoActions.DELETE_TODO: {
-      return state.map(s => todo(s, action))
+
+      return state.filter(s => s.id !== action.todo.id)
     }
 
     case TodoActions.DELETE_TODO_SUCCESS: {
       return state.filter(s => todo(s, action))
     }
+
     default:
       return state
   }
 }
 
-
-//The individual Reducer. It handles only one Todo Object.
-
-
 const todo = (state, action) => {
-
-// If the mapped todo of the previous state matches with the new ID of the action,
-// Only then proceed to the Reducer Switch case
-
-  if (state._id !== (action._id || action.todo._id)) {
+  if (state.id !== (action.id || action.todo.id)) {
     return state;
   }
 
   switch (action.type) {
-
-    // Edit/modifies the individual Todos using ES6 spread operator. The cases are self explanatory.
 
     case TodoActions.START_EDITING:
       {
@@ -95,7 +80,8 @@ const todo = (state, action) => {
         return {
           ...state,
           ...action.todo,
-          updating: false
+          updating: false,
+          editing: false
         }
       }
 
@@ -106,11 +92,6 @@ const todo = (state, action) => {
             deleting: true
           }
         }
-
-    case TodoActions.DELETE_TODO_SUCCESS:
-      {
-        return false
-      }
 
     default:
       {
