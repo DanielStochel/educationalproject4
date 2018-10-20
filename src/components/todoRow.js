@@ -27,7 +27,7 @@ const getClassName = (props) => {
     ${props.todo.updating ? "updating" : ""}
     ${props.todo.status === 'done' ? "done" : ""}
     ${props.todo.deleting ? "deleting" : ""}
-    `
+  `
 }
 
 export default TodoRow;

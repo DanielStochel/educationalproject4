@@ -4,6 +4,9 @@ export const CREATE_TODO = '[Todo] CREATE_TODO'
 export const CREATE_TODO_SUCCESS = '[Todo] CREATE_TODO_SUCCESS'
 export const CREATE_TODO_ERROR = '[Todo] CREATE_TODO_ERROR'
 
+export const HIDE_ERRORS = 'HIDE_ERRORS'
+export const DISPLAY_ERRORS = 'DISPLAY_ERRORS'
+
 export const GET_TODOS = '[Todo] GET_TODOS'
 export const GET_TODOS_SUCCESS = '[Todo] GET_TODOS_SUCCESS'
 export const GET_TODOS_ERROR = '[Todo] GET_TODOS_ERROR'
@@ -25,7 +28,25 @@ export function CreateTodo(todo) {
   return (dispatch, getState) => {
     return TodoApi.createTodo(todo).then(res => {
       dispatch(CreateTodoSuccess(res.data))
+      dispatch(HideErrors())
     })
+    .catch(error => {
+      dispatch(DisplayErrors(error.response.data.message))
+    })
+  }
+}
+
+export function HideErrors() {
+  return {
+    type: HIDE_ERRORS,
+    error: ''
+  }
+}
+
+export function DisplayErrors(error) {
+  return {
+    type: DISPLAY_ERRORS,
+    error
   }
 }
 

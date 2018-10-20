@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Button, Table} from 'semantic-ui-react'
-import {Input} from 'semantic-ui-react'
+import {Table} from 'semantic-ui-react'
+import {Input} from 'semantic-ui-react';
+import Options from './Options'
 
 class EditTodo extends Component {
   constructor(props) {
@@ -28,11 +29,15 @@ class EditTodo extends Component {
   }
 
   changeNewDescription = (event) => {
-    this.setState({description: event.target.value})
+    this.setState({
+      description: event.target.value
+    })
   }
 
   changeNewCreated = (event) => {
-    this.setState({created_by: event.target.value})
+    this.setState({
+      created_by: event.target.value
+    })
   }
 
   createTodo = (event) => {
@@ -89,37 +94,3 @@ class EditTodo extends Component {
 }
 
 export default EditTodo;
-
-const Options = (props) => {
-  if (props.todo && props.todo.editing) {
-    return EditOptions(props);
-  } else {
-    return AddOptions(props);
-  }
-}
-
-const EditOptions = (props) => {
-  return (
-    <Table.Cell>
-      <Button color='green' onClick={props.editTodo}>
-        Edit
-      </Button>
-      < Button color='blue' onClick={props.cancelEdit}>
-        Cancel
-      </Button>
-    </Table.Cell>
-  );
-}
-
-const AddOptions = (props) => {
-  return (
-    <Table.Cell>
-      <Button color='green' onClick={props.createTodo}>
-        Create
-      </Button>
-      < Button color='blue' onClick={props.resetTodo}>
-        Reset
-      </Button>
-    </Table.Cell>
-  );
-}

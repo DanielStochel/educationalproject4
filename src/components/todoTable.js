@@ -20,7 +20,7 @@ const TodoTable = (props) => {
               return <EditTodo
                 editTodo={props.editTodo}
                 cancelEditing={e => props.cancelEditing(t.id)}
-                key={t._id}
+                key={t.id}
                 todo={t} />
             } else {
               return <TodoRow

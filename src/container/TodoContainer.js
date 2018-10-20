@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import * as TodoActions from './actions/todoActions'
+import * as TodoActions from '../actions/todoActions'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 import { PropTypes } from 'prop-types'
-import TodoTable from './components/todoTable';
+import TodoTable from '../components/todoTable';
 
-export class TodoContainer extends Component {
+
+class TodoContainer extends Component {
   createTodo = (todo) => {
     this.props.actions.CreateTodo(todo)
   }
@@ -31,7 +32,7 @@ export class TodoContainer extends Component {
   }
 
   render() {
-    return (
+    return(
       <div className="todo-container">
         <TodoTable
           todos={this.props.todos}

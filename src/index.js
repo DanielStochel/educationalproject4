@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 import 'font-awesome/css/font-awesome.css'
-import App from './App';
+import TodoApp from './TodoApp';
 import * as serviceWorker from './serviceWorker';
 import * as TodoActions from './actions/todoActions'
 
@@ -15,7 +15,7 @@ store.dispatch(TodoActions.GetTodos())
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <TodoApp />
   </Provider>, document.getElementById('root'));
 
 serviceWorker.unregister();
