@@ -1,7 +1,7 @@
 ![](https://github.com/DanielStochel/Todo-app/blob/master/public/react-app.png)
 
 ## Application Event-Management
-Its an application to create, delete, edit
+Its an application to create, delete, edit tasks
 Heres the link to demo:
 ## https://todotasks-29a98.firebaseapp.com/
 
