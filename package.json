@@ -5,6 +5,7 @@
   "homepage": "https://DanielStochel.github.io/educationalproject4",
   "dependencies": {
     "axios": "^0.18.0",
+    "enzyme": "^3.8.0",
     "font-awesome": "^4.7.0",
     "gh-pages": "^2.0.1",
     "jest": "^23.6.0",
