@@ -5,7 +5,6 @@
   "homepage": "https://DanielStochel.github.io/educationalproject4",
   "dependencies": {
     "axios": "^0.18.0",
-    "enzyme": "^3.8.0",
     "font-awesome": "^4.7.0",
     "gh-pages": "^2.0.1",
     "jest": "^23.6.0",
@@ -37,5 +36,9 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1"
+  }
 }

@@ -21,6 +21,7 @@ export function TodoListReducer(state = [], action) {
     case TodoActions.CANCEL_EDITING: {
       return state.map(s => todo(s, action))
     }
+
     case TodoActions.UPDATE_TODO: {
       return state.map(s => todo(s, action))
     }
@@ -49,7 +50,6 @@ const todo = (state, action) => {
   }
 
   switch (action.type) {
-
     case TodoActions.START_EDITING:
       {
         return {
