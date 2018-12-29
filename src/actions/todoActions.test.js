@@ -55,14 +55,9 @@ describe("async actions", () => {
   });
 
   it("mock request with 422 status", () => {
-    moxios.wait(() => {
-      const request = moxios.requests.mostRecent();
-      request.respondWith({
-        status: 422,
-        response: {
-          error: undefined
-        }
-      });
+    moxios.stubRequest("https://todos-api-learn.herokuapp.com/todos", {
+      status: 422,
+      response: {error: 'error'}
     });
 
     const expectedActions = [{ error: undefined, type: "DISPLAY_ERRORS" }];
@@ -72,3 +67,5 @@ describe("async actions", () => {
     });
   });
 });
+
+
