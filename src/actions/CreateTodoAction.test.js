@@ -11,7 +11,7 @@ const todo = {
   created_by: "Daniel"
 };
 
-describe("async actions", () => {
+describe("positive CreateTodo action Creator", () => {
   beforeEach(function() {
     moxios.install();
   });
@@ -44,7 +44,7 @@ describe("async actions", () => {
   });
 });
 
-describe("async actions", () => {
+describe("negative CreateTodo action Creator", () => {
   beforeEach(function() {
     moxios.install();
   });
@@ -57,7 +57,7 @@ describe("async actions", () => {
   it("mock request with 422 status", () => {
     moxios.stubRequest("https://todos-api-learn.herokuapp.com/todos", {
       status: 422,
-      response: {error: 'error'}
+      response: { error: "error" }
     });
 
     const expectedActions = [{ error: undefined, type: "DISPLAY_ERRORS" }];
