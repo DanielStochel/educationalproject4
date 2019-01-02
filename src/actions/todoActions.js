@@ -112,6 +112,7 @@ export function DeleteTodo(todo) {
       type: DELETE_TODO,
       todo
     })
+    
     TodoApi.removeTodo(todo).then(res => {
       if (res.status === 204) {
         dispatch(DeleteTodoSuccess(todo))

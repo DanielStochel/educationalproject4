@@ -14,9 +14,9 @@ const todo = {
     created_by: "dsadas",
     created_at: "dsadsa"
   }
-}
+};
 
-describe("compare actions", () => {
+describe("compare deleting actions with store", () => {
   beforeEach(function() {
     moxios.install();
   });
@@ -31,15 +31,18 @@ describe("compare actions", () => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
         status: 204,
+        response: todo
       });
     });
 
-  const expectedActions = [
-      { type: actions.DELETE_TODO, todo }
+    const expectedActions = [
+      { type: actions.DELETE_TODO, todo },
+      { id: todo.id, todo, type: actions.DELETE_TODO_SUCCESS }
     ];
 
     return (
       store.dispatch(actions.DeleteTodo(todo)),
+      store.dispatch(actions.DeleteTodoSuccess(todo)),
       expect(expectedActions).toEqual(store.getActions())
     );
   });
