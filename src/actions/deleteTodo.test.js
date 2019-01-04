@@ -11,8 +11,8 @@ const todo = {
   id: 141,
   todo: {
     id: 141,
-    created_by: "dsadas",
-    created_at: "dsadsa"
+    created_by: "Daniel",
+    created_at: "Daniel"
   }
 };
 
