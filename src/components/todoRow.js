@@ -2,19 +2,20 @@ import React from 'react';
 import {Button, Table} from 'semantic-ui-react'
 
 const TodoRow = (props) => {
+  const {todo, completeTodo, startEditing, deleteTodo} = props
   return (
     <Table.Row className={getClassName(props)}>
-      <Table.Cell>{props.todo.title}</Table.Cell>
-      <Table.Cell>{props.todo.description}</Table.Cell>
-      <Table.Cell>{props.todo.created_by}</Table.Cell>
+      <Table.Cell>{todo.title}</Table.Cell>
+      <Table.Cell>{todo.description}</Table.Cell>
+      <Table.Cell>{todo.created_by}</Table.Cell>
       <Table.Cell className="options">
-        {props.todo.status !== 'done' && <Button className="option-buttons" color='green' onClick={props.completeTodo}>
+        {props.todo.status !== 'done' && <Button className="option-buttons" color='green' onClick={completeTodo}>
           <i className="fa fa-check"></i>
         </Button>}
-          <Button className="option-buttons" color='blue' onClick={props.startEditing}>
+          <Button className="option-buttons" color='blue' onClick={startEditing}>
             <i className="fa fa-pencil"></i>
           </Button>
-          <Button className="option-buttons" color='red' onClick={props.deleteTodo}>
+          <Button className="option-buttons" color='red' onClick={deleteTodo}>
             <i className="fa fa-trash"></i>
           </Button>
       </Table.Cell>

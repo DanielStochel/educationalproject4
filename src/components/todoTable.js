@@ -1,9 +1,18 @@
-import React from 'react';
-import { Table} from 'semantic-ui-react'
-import TodoRow from './todoRow'
-import EditTodo from './editTodo'
+import React from "react";
+import { Table } from "semantic-ui-react";
+import TodoRow from "./todoRow";
+import EditTodo from "./editTodo";
 
-const TodoTable = (props) => {
+const TodoTable = props => {
+  const {
+    editTodo,
+    cancelEditing,
+    completeTodo,
+    startEditing,
+    deleteTodo,
+    createTodo,
+    todos
+  } = props;
   return (
     <Table celled>
       <Table.Header>
@@ -14,29 +23,34 @@ const TodoTable = (props) => {
           <Table.HeaderCell>Options</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
-        <Table.Body>
-          {props.todos.map(t => {
-            if (t.editing) {
-              return <EditTodo
-                editTodo={props.editTodo}
-                cancelEditing={e => props.cancelEditing(t.id)}
+      <Table.Body>
+        {todos.map(t => {
+          if (t.editing) {
+            return (
+              <EditTodo
+                editTodo={editTodo}
+                cancelEditing={() => cancelEditing(t.id)}
                 key={t.id}
-                todo={t} />
-            } else {
-              return <TodoRow
+                todo={t}
+              />
+            );
+          } else {
+            return (
+              <TodoRow
                 todo={t}
                 key={t.id}
-                completeTodo={e => props.completeTodo(t)}
-                startEditing={e => props.startEditing(t.id)}
-                deleteTodo={e=> props.deleteTodo(t)}
+                completeTodo={() => completeTodo(t)}
+                startEditing={() => startEditing(t.id)}
+                deleteTodo={() => deleteTodo(t)}
               />
-            }
-          })}
+            );
+          }
+        })}
 
-          <EditTodo createTodo={props.createTodo} />
-        </Table.Body>
+        <EditTodo createTodo={createTodo} />
+      </Table.Body>
     </Table>
-  )
-}
+  );
+};
 
 export default TodoTable;
