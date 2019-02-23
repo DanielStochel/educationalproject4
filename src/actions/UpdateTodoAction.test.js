@@ -11,7 +11,7 @@ const todo = {
   id: 141,
   todo: {
     id: 141,
-    created_by: "dsadas",
+    created_by: "dsadas"
   }
 };
 
@@ -30,11 +30,14 @@ describe("checking if dispatches actions work", () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
-        status: 204,
+        status: 204
       });
     });
-    
-    const expectedActions = [{ type: actions.UPDATE_TODO, todo }, { type: actions.UPDATE_TODO_SUCCESS, todo, id: todo.id }];
+
+    const expectedActions = [
+      { type: actions.UPDATE_TODO, todo },
+      { type: actions.UPDATE_TODO_SUCCESS, todo, id: todo.id }
+    ];
 
     return (
       store.dispatch(actions.UpdateTodo(todo)),

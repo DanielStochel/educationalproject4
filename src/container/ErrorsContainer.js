@@ -6,16 +6,14 @@ class ErrorsContainer extends Component {
   render(){
     return (
       <div className="container-error">
-        <DisplayView error={this.props}/>
+        <DisplayView error={this.props.errors}/>
       </div>
     )
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  return {
-    errors: state.errors
-  }
-}
+const mapState = state => ({
+  errors: state.errors
+});
 
-export default connect(mapStateToProps)(ErrorsContainer);
+export default connect(mapState)(ErrorsContainer);
