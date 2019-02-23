@@ -11,7 +11,7 @@ const todo = {
   created_by: "Daniel"
 };
 
-describe("positive CreateTodo action Creator", () => {
+describe("positive CreateTodo response", () => {
   beforeEach(function() {
     moxios.install();
   });
@@ -44,7 +44,7 @@ describe("positive CreateTodo action Creator", () => {
   });
 });
 
-describe("negative CreateTodo action Creator", () => {
+describe("negative CreateTodo response", () => {
   beforeEach(function() {
     moxios.install();
   });

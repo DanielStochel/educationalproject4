@@ -15,7 +15,7 @@ const todo = {
   }
 };
 
-describe("checking if dispatches actions work", () => {
+describe("checking if action updates the store", () => {
   beforeEach(function() {
     moxios.install();
     store = mockStore({ todos: [] });
