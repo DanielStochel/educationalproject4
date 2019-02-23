@@ -1,7 +1,7 @@
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import expect from "expect";
-import * as actions from "./todoActions";
+import * as actions from "../todoActions";
 import moxios from "moxios";
 
 const middlewares = [thunk];
@@ -11,14 +11,14 @@ const todo = {
   id: 141,
   todo: {
     id: 141,
-    created_by: "Daniel",
-    created_at: "Daniel"
+    created_by: "dsadas"
   }
 };
 
-describe("compare deleting actions with store", () => {
+describe("checking if action updates the store", () => {
   beforeEach(function() {
     moxios.install();
+    store = mockStore({ todos: [] });
   });
 
   afterEach(function() {
@@ -26,23 +26,21 @@ describe("compare deleting actions with store", () => {
     store = mockStore({ todos: [] });
   });
 
-  it("mock request with 204 status", () => {
+  it("mock request with 200 status", () => {
     moxios.wait(() => {
       const request = moxios.requests.mostRecent();
       request.respondWith({
-        status: 204,
-        response: todo
+        status: 204
       });
     });
 
     const expectedActions = [
-      { type: actions.DELETE_TODO, todo },
-      { id: todo.id, todo, type: actions.DELETE_TODO_SUCCESS }
+      { type: actions.UPDATE_TODO, todo },
+      { type: actions.UPDATE_TODO_SUCCESS, todo, id: todo.id }
     ];
 
     return (
-      store.dispatch(actions.DeleteTodo(todo)),
-      store.dispatch(actions.DeleteTodoSuccess(todo)),
+      store.dispatch(actions.UpdateTodo(todo)),
       expect(expectedActions).toEqual(store.getActions())
     );
   });
