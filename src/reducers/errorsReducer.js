@@ -1,17 +1,16 @@
-import * as TodoActions from '../actions/todoActions'
+import { DISPLAY_ERRORS, HIDE_ERRORS } from "../actions/actionsConst";
 
-export function ErrorsReducer(state = '', action) {
+export function ErrorsReducer(state = "", action) {
   switch (action.type) {
-
-    case TodoActions.DISPLAY_ERRORS: {
-      return action.error
+    case DISPLAY_ERRORS: {
+      return action.error;
     }
 
-    case TodoActions.HIDE_ERRORS: {
-      return action.error
+    case HIDE_ERRORS: {
+      return action.error;
     }
 
     default:
-      return state
+      return state;
   }
 }

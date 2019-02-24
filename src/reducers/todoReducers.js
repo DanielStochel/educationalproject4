@@ -1,36 +1,45 @@
-import * as TodoActions from "../actions/todoActions";
+import {
+  CREATE_TODO_SUCCESS,
+  GET_TODOS_SUCCESS,
+  UPDATE_TODO,
+  UPDATE_TODO_SUCCESS,
+  DELETE_TODO,
+  DELETE_TODO_SUCCESS,
+  START_EDITING,
+  CANCEL_EDITING
+} from "../actions/actionsConst";
 
 export function TodoListReducer(state = [], action) {
   switch (action.type) {
-    case TodoActions.CREATE_TODO_SUCCESS: {
+    case CREATE_TODO_SUCCESS: {
       return [...state, action.todo];
     }
 
-    case TodoActions.GET_TODOS_SUCCESS: {
+    case GET_TODOS_SUCCESS: {
       return action.todos.data;
     }
 
-    case TodoActions.START_EDITING: {
+    case START_EDITING: {
       return state.map(s => todo(s, action));
     }
 
-    case TodoActions.CANCEL_EDITING: {
+    case CANCEL_EDITING: {
       return state.map(s => todo(s, action));
     }
 
-    case TodoActions.UPDATE_TODO: {
+    case UPDATE_TODO: {
       return state.map(s => todo(s, action));
     }
 
-    case TodoActions.UPDATE_TODO_SUCCESS: {
+    case UPDATE_TODO_SUCCESS: {
       return state.map(s => todo(s, action));
     }
 
-    case TodoActions.DELETE_TODO: {
+    case DELETE_TODO: {
       return state.filter(s => s.id !== action.todo.id);
     }
 
-    case TodoActions.DELETE_TODO_SUCCESS: {
+    case DELETE_TODO_SUCCESS: {
       return state.filter(s => todo(s, action));
     }
 
@@ -45,21 +54,21 @@ const todo = (state, action) => {
   }
 
   switch (action.type) {
-    case TodoActions.START_EDITING: {
+    case START_EDITING: {
       return {
         ...state,
         editing: true
       };
     }
 
-    case TodoActions.CANCEL_EDITING: {
+    case CANCEL_EDITING: {
       return {
         ...state,
         editing: false
       };
     }
 
-    case TodoActions.UPDATE_TODO: {
+    case UPDATE_TODO: {
       return {
         ...state,
         editing: false,
@@ -67,7 +76,7 @@ const todo = (state, action) => {
       };
     }
 
-    case TodoActions.UPDATE_TODO_SUCCESS: {
+    case UPDATE_TODO_SUCCESS: {
       return {
         ...state,
         ...action.todo,
@@ -76,7 +85,7 @@ const todo = (state, action) => {
       };
     }
 
-    case TodoActions.DELETE_TODO: {
+    case DELETE_TODO: {
       return {
         ...state,
         deleting: true
