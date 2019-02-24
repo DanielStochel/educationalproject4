@@ -1,41 +1,38 @@
 import React, { Component } from "react";
-import * as TodoActions from "../actions/todoActions";
-import { bindActionCreators } from "redux";
+import {
+  CreateTodo,
+  StartEditing,
+  CancelEditing,
+  UpdateTodo,
+  DeleteTodo
+} from "../actions/todoActions";
 import { connect } from "react-redux";
 import { PropTypes } from "prop-types";
 import TodoTable from "../components/todoTable";
 
-const mapState = state => ({
-  todos: state.todos
-});
-
-const actions = dispatch => ({
-  actions: bindActionCreators(TodoActions, dispatch)
-});
-
 class TodoContainer extends Component {
   createTodo = todo => {
-    this.props.actions.CreateTodo(todo);
+    this.props.CreateTodo(todo);
   };
 
   startEditing = id => {
-    this.props.actions.StartEditing(id);
+    this.props.StartEditing(id);
   };
 
   cancelEditing = id => {
-    this.props.actions.CancelEditing(id);
+    this.props.CancelEditing(id);
   };
 
   editTodo = todo => {
-    this.props.actions.UpdateTodo(todo);
+    this.props.UpdateTodo(todo);
   };
 
   completeTodo = todo => {
-    this.props.actions.UpdateTodo({ ...todo, status: "done" });
+    this.props.UpdateTodo({ ...todo, status: "done" });
   };
 
   deleteTodo = todo => {
-    this.props.actions.DeleteTodo(todo);
+    this.props.DeleteTodo(todo);
   };
 
   render() {
@@ -56,8 +53,19 @@ class TodoContainer extends Component {
 }
 
 TodoContainer.propTypes = {
-  actions: PropTypes.object.isRequired,
   todos: PropTypes.array.isRequired
+};
+
+const mapState = state => ({
+  todos: state.todos
+});
+
+const actions = {
+  CreateTodo,
+  StartEditing,
+  CancelEditing,
+  UpdateTodo,
+  DeleteTodo
 };
 
 export default connect(
