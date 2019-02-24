@@ -131,19 +131,19 @@ describe("todos reducer", () => {
   });
 
   it("should handle DELETE_TODO_SUCCESS", () => {
-    expect(TodoListReducer(
+    expect(
+      TodoListReducer(
         [
           {
-            todos: [
-              { id: 1, title: "learning testing", created_by: "Daniel" }
-            ]
+            todos: [{ id: 1, title: "learning testing", created_by: "Daniel" }]
           }
         ],
         {
           type: TodoActions.DELETE_TODO_SUCCESS,
           todo: { id: 1, title: "learning testing", created_by: "Daniel" }
         }
-      )).toEqual([
+      )
+    ).toEqual([
       {
         todos: [
           {
