@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import ErrorsContainer from './container/ErrorsContainer';
-import TodoContainer from './container/TodoContainer';
+import ErrorsContainer from './containers/ErrorsContainer';
+import TodoContainer from './containers/TodoContainer';
 
 class TodoApp extends Component {
   render(){

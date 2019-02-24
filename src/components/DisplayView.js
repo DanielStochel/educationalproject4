@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DisplayView = (props) => {
+const DisplayView = props => {
   return (
     <p>{props.error}</p>
   )

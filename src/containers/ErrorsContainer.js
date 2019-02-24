@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import DisplayView from '../components/DisplayView'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import DisplayView from "../components/DisplayView";
 
 class ErrorsContainer extends Component {
-  render(){
+  render() {
     return (
       <div className="container-error">
-        <DisplayView error={this.props.errors}/>
+        <DisplayView error={this.props.errors} />
       </div>
-    )
+    );
   }
 }
 
