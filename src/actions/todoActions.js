@@ -1,28 +1,16 @@
 import { TodoApi } from "../api/todoApi";
-
-export const CREATE_TODO = "[Todo] CREATE_TODO";
-export const CREATE_TODO_SUCCESS = "[Todo] CREATE_TODO_SUCCESS";
-export const CREATE_TODO_ERROR = "[Todo] CREATE_TODO_ERROR";
-
-export const HIDE_ERRORS = "HIDE_ERRORS";
-export const DISPLAY_ERRORS = "DISPLAY_ERRORS";
-
-export const GET_TODOS = "[Todo] GET_TODOS";
-export const GET_TODOS_SUCCESS = "[Todo] GET_TODOS_SUCCESS";
-export const GET_TODOS_ERROR = "[Todo] GET_TODOS_ERROR";
-
-export const START_EDITING = "[Todo] START_EDITING";
-export const CANCEL_EDITING = "[Todo] CANCEL_EDITING";
-
-export const UPDATE_TODO = "[Todo] UPDATE_TODO";
-export const UPDATE_TODO_SUCCESS = "[Todo] UPDATE_TODO_SUCCESS";
-export const UPDATE_TODO_ERROR = "[Todo] UPDATE_TODO_ERROR";
-
-export const COMPLETE_TODO = "COMPLETE_TODO";
-
-export const DELETE_TODO = "[Todo] DELETE_TODO";
-export const DELETE_TODO_SUCCESS = "[Todo] DELETE_TODO_SUCCESS";
-export const DELETE_TODO_ERROR = "[Todo] DELETE_TODO_ERROR";
+import {
+  CREATE_TODO_SUCCESS,
+  HIDE_ERRORS,
+  DISPLAY_ERRORS,
+  GET_TODOS_SUCCESS,
+  UPDATE_TODO,
+  UPDATE_TODO_SUCCESS,
+  DELETE_TODO,
+  DELETE_TODO_SUCCESS,
+  START_EDITING,
+  CANCEL_EDITING
+} from "./actionsConst";
 
 export const CreateTodo = todo => async (dispatch, getState) => {
   try {
@@ -55,15 +43,14 @@ export function CreateTodoSuccess(todo) {
   };
 }
 
-export const GetTodos = () => 
-  async (dispatch, getState) => {
-    try {
-      const getTodo = await TodoApi.getTodo()
-      await dispatch(GetTodoSuccess(getTodo))      
-    } catch (error) {
-      console.log(error)
-    }
+export const GetTodos = () => async (dispatch, getState) => {
+  try {
+    const getTodo = await TodoApi.getTodo();
+    await dispatch(GetTodoSuccess(getTodo));
+  } catch (error) {
+    console.log(error);
   }
+};
 
 export function GetTodoSuccess(todos) {
   return {
