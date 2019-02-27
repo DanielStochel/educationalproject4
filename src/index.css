@@ -7,8 +7,9 @@
 }
 
 .done {
-  background: rgb(69, 226, 69);
+  background: rgb(9, 230, 218);
 }
+
 .deleting {
   background: rgb(235, 122, 73);
 }
@@ -31,6 +32,11 @@ td.options {
 
 .container-error p {
   animation: animate 3s linear infinite
+}
+
+.todo-container {
+  width: 90%;
+  margin: auto
 }
 
 @keyframes animate
