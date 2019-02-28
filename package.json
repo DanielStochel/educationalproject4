@@ -2,10 +2,10 @@
   "name": "todo-ap",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://DanielStochel.github.io/educationalproject4",
   "dependencies": {
     "axios": "^0.18.0",
     "fetch-mock": "^7.2.7",
+    "firebase": "^5.8.4",
     "font-awesome": "^4.7.0",
     "gh-pages": "^2.0.1",
     "jest": "^23.6.0",
