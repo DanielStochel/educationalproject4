@@ -9,7 +9,7 @@ const Options = props => {
   }
 };
 
-const EditOptions = props => {
+export const EditOptions = props => {
   return (
     <Table.Cell>
       <Button color="green" onClick={props.editTodo}>
@@ -22,7 +22,7 @@ const EditOptions = props => {
   );
 };
 
-const AddOptions = props => {
+export const AddOptions = props => {
   return (
     <Table.Cell>
       <Button color="green" onClick={props.createTodo}>
