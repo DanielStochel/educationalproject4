@@ -1,5 +1,15 @@
 import { TodoListReducer } from "./todoReducers";
 import * as TodoActions from "../actions/todoActions";
+import {
+  CREATE_TODO_SUCCESS,
+  GET_TODOS_SUCCESS,
+  START_EDITING,
+  CANCEL_EDITING,
+  UPDATE_TODO,
+  UPDATE_TODO_SUCCESS,
+  DELETE_TODO,
+  DELETE_TODO_SUCCESS
+} from "../actions/actionsConst";
 
 describe("todos reducer", () => {
   it("should return the initial state", () => {
@@ -9,7 +19,7 @@ describe("todos reducer", () => {
   it("should handle CREATE_TODO_SUCCESS", () => {
     expect(
       TodoListReducer([], {
-        type: TodoActions.CREATE_TODO_SUCCESS,
+        type: CREATE_TODO_SUCCESS,
         todo: { id: 1, title: "learning testing", created_by: "Daniel" }
       })
     ).toEqual([{ id: 1, title: "learning testing", created_by: "Daniel" }]);
@@ -18,7 +28,7 @@ describe("todos reducer", () => {
   it("should handle GET_TODOS_SUCCESS", () => {
     expect(
       TodoListReducer([], {
-        type: TodoActions.GET_TODOS_SUCCESS,
+        type: GET_TODOS_SUCCESS,
         todos: {
           data: { id: 1, title: "learning testing", created_by: "Daniel" }
         }
@@ -31,7 +41,7 @@ describe("todos reducer", () => {
       TodoListReducer(
         [{ id: 1, title: "learning testing", created_by: "Daniel" }],
         {
-          type: TodoActions.START_EDITING,
+          type: START_EDITING,
           id: 1
         }
       )
@@ -50,7 +60,7 @@ describe("todos reducer", () => {
       TodoListReducer(
         [{ id: 1, title: "learning testing", created_by: "Daniel" }],
         {
-          type: TodoActions.CANCEL_EDITING,
+          type: CANCEL_EDITING,
           id: 1
         }
       )
@@ -69,7 +79,7 @@ describe("todos reducer", () => {
       TodoListReducer(
         [{ id: 1, title: "learning testing", created_by: "Daniel" }],
         {
-          type: TodoActions.UPDATE_TODO,
+          type: UPDATE_TODO,
           id: 1
         }
       )
@@ -89,7 +99,7 @@ describe("todos reducer", () => {
       TodoListReducer(
         [{ id: 1, title: "learning testing", created_by: "Daniel" }],
         {
-          type: TodoActions.UPDATE_TODO_SUCCESS,
+          type: UPDATE_TODO_SUCCESS,
           id: 1
         }
       )
@@ -113,7 +123,7 @@ describe("todos reducer", () => {
           }
         ],
         {
-          type: TodoActions.DELETE_TODO,
+          type: DELETE_TODO,
           todo: { id: 1, title: "learning testing", created_by: "Daniel" }
         }
       )
@@ -139,7 +149,7 @@ describe("todos reducer", () => {
           }
         ],
         {
-          type: TodoActions.DELETE_TODO_SUCCESS,
+          type: DELETE_TODO_SUCCESS,
           todo: { id: 1, title: "learning testing", created_by: "Daniel" }
         }
       )

@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import expect from "expect";
 import * as actions from "../todoActions";
 import moxios from "moxios";
+import { DELETE_TODO_SUCCESS, DELETE_TODO } from "../actionsConst";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -36,8 +37,8 @@ describe("compare deleting actions with store", () => {
     });
 
     const expectedActions = [
-      { type: actions.DELETE_TODO, todo },
-      { id: todo.id, todo, type: actions.DELETE_TODO_SUCCESS }
+      { type: DELETE_TODO, todo },
+      { id: todo.id, todo, type: DELETE_TODO_SUCCESS }
     ];
 
     return (

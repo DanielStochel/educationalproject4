@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import expect from "expect";
 import * as actions from "../todoActions";
 import moxios from "moxios";
+import { UPDATE_TODO, UPDATE_TODO_SUCCESS } from '../actionsConst'
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -35,8 +36,8 @@ describe("checking if action updates the store", () => {
     });
 
     const expectedActions = [
-      { type: actions.UPDATE_TODO, todo },
-      { type: actions.UPDATE_TODO_SUCCESS, todo, id: todo.id }
+      { type: UPDATE_TODO, todo },
+      { type: UPDATE_TODO_SUCCESS, todo, id: todo.id }
     ];
 
     return (
