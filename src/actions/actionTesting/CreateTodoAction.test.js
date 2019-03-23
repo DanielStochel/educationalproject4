@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import expect from "expect";
 import * as actions from "../todoActions";
 import moxios from "moxios";
+import { CREATE_TODO_SUCCESS } from "../actionsConst";
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -32,7 +33,7 @@ describe("positive CreateTodo response", () => {
 
     const expectedActions = [
       {
-        type: actions.CREATE_TODO_SUCCESS,
+        type: CREATE_TODO_SUCCESS,
         todo
       },
       { error: "", type: "HIDE_ERRORS" }

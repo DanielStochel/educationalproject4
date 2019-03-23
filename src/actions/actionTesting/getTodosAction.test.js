@@ -2,6 +2,7 @@ import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import expect from "expect";
 import * as actions from "../todoActions";
+import { GET_TODOS_SUCCESS } from "../actionsConst"; 
 import moxios from "moxios";
 
 const middlewares = [thunk];
@@ -27,13 +28,11 @@ describe("checking if dispatch sends correct actions to store", () => {
       });
     });
 
-    const expectedActions = [ actions.GET_TODOS_SUCCESS ];
+    const expectedActions = [GET_TODOS_SUCCESS ];
 
     return store.dispatch(actions.GetTodos()).then(() => {
-
       const dispatchedActions = store.getActions();
-      const actionTypes = dispatchedActions.map(action => action.type);
-
+      const actionTypes = dispatchedActions.map(action => action.type); 
       expect(actionTypes).toEqual(expectedActions);
     });
   });
