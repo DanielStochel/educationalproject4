@@ -1,21 +1,21 @@
-import { HttpClient } from "./httpClient";
+import axios from "axios";
 
 const API = "https://todos-api-learn.herokuapp.com/todos";
 
 const createTodo = todo => {
-  return HttpClient.post(API, todo);
+  return axios.post(API, todo);
 };
 
 const getTodo = () => {
-  return HttpClient.get(API);
+  return axios.get(API);
 };
 
 const updateTodo = todo => {
-  return HttpClient.put(`${API}/${todo.id}`, todo);
+  return axios.put(`${API}/${todo.id}`, todo);
 };
 
 const removeTodo = todo => {
-  return HttpClient.delete(`${API}/${todo.id}`);
+  return axios.delete(`${API}/${todo.id}`);
 };
 
 const TodoApi = { createTodo, getTodo, updateTodo, removeTodo };
