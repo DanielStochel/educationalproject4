@@ -1,7 +1,7 @@
 ![](https://github.com/DanielStochel/Todo-app/blob/master/public/react-app.png)
 
 ## Application Todo-app
-Its an application to create, delete, edit tasks
+It's an todo-app, You can create, delete, edit tasks. The project has been tested with JEST
 Heres the link to demo:
 ## https://todotasks-29a98.firebaseapp.com/
 
@@ -29,7 +29,10 @@ npm start
 
 
 ## Built with
+* HTML5
+* CSS3
+* SEMANTIC UI REACT
 * JAVASCRIPT
 * REACT
 * REDUX
-* Semantic
+* JEST 
