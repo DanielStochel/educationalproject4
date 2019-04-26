@@ -13,4 +13,3 @@ export const UPDATE_TODO_SUCCESS = "[Todo] UPDATE_TODO_SUCCESS";
 
 export const DELETE_TODO = "[Todo] DELETE_TODO";
 export const DELETE_TODO_SUCCESS = "[Todo] DELETE_TODO_SUCCESS";
-
