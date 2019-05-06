@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Table, Label } from "semantic-ui-react";
 
-const TodoRow = props => {
+const TodoRow = (props) => {
   const { todo, completeTodo, startEditing, deleteTodo } = props;
   return (
     <Table.Row className={getClassName(props)}>

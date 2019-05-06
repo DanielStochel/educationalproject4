@@ -3,16 +3,15 @@ import { Table } from "semantic-ui-react";
 import TodoRow from "./todoRow";
 import EditTodo from "./editTodo";
 
-const TodoTable = props => {
-  const {
-    editTodo,
-    cancelEditing,
-    completeTodo,
-    startEditing,
-    deleteTodo,
-    createTodo,
-    todos
-  } = props;
+const TodoTable = ({
+  editTodo,
+  cancelEditing,
+  completeTodo,
+  startEditing,
+  deleteTodo,
+  createTodo,
+  todos
+}) => {
   return (
     <Table celled>
       <Table.Header>
