@@ -56,8 +56,8 @@ TodoContainer.propTypes = {
   todos: PropTypes.array.isRequired
 };
 
-const mapState = state => ({
-  todos: state.todos
+const mapState = ({todos}) => ({
+  todos
 });
 
 const actions = {

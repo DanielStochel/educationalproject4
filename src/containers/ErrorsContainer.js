@@ -12,8 +12,8 @@ class ErrorsContainer extends Component {
   }
 }
 
-const mapState = state => ({
-  errors: state.errors
+const mapState = ({errors}) => ({
+  errors
 });
 
 export default connect(mapState)(ErrorsContainer);
